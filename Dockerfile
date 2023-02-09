@@ -1,6 +1,6 @@
 # Image name: genmon_ubuntu:latest
 # https://github.com/JMVS/genmon-docker
-# rev 01
+# rev 01.1
 # 2022/11/15
 
 # Base image
@@ -36,7 +36,7 @@ RUN apt-get autoremove -y && apt-get clean
 VOLUME /etc/genmon
 VOLUME /var/log
 
-# Expose these ports
+# Expose these ports 
 EXPOSE 443
 EXPOSE 8000
 
