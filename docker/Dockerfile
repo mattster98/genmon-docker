@@ -10,7 +10,7 @@ FROM ubuntu:latest
 RUN apt-get -y update && apt-get -y upgrade
 RUN DEBIAN_FRONTEND="noninteractive" TZ="America/Argentina/Buenos_Aires" \
 apt-get install -yq --no-install-recommends \
-    sudo cron curl nano git build-essential libssl-dev libffi-dev python3-dev tzdata python3-pip
+    sudo cron curl nano git build-essential libssl-dev libffi-dev python3-dev tzdata python3-full python3-pip
 
 
 # Upgrade PIP
