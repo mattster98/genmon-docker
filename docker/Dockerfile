@@ -8,10 +8,13 @@ FROM ubuntu:latest
 
 # Update & install dependencies
 RUN apt-get -y update && apt-get -y upgrade
-RUN DEBIAN_FRONTEND="noninteractive" TZ="America/Argentina/Buenos_Aires" apt-get install -yq --no-install-recommends sudo cron curl nano git build-essential libssl-dev libffi-dev python3-dev tzdata python3-pip
+RUN DEBIAN_FRONTEND="noninteractive" TZ="America/Argentina/Buenos_Aires" \
+apt-get install -yq --no-install-recommends \
+    sudo cron curl nano git build-essential libssl-dev libffi-dev python3-dev tzdata python3-pip
+
 
 # Upgrade PIP
-RUN sudo pip3 install --upgrade pip
+RUN python3 -m pip install --upgrade pip
 
 # Clone genmon's repository & set working directory
 RUN git clone https://github.com/jgyates/genmon.git
@@ -27,7 +30,7 @@ RUN sed -i "s|serial_tcp_port = 8899|serial_tcp_port = 6638|g" ./conf/genmon.con
 RUN sudo chmod 775 ./genmonmaint.sh && bash ./genmonmaint.sh -i -n -p 3 -s
 
 # Install another dependency not handled by install script but that genmon complaints on first run
-RUN pip install spidev
+RUN python3 -m pip install spidev
 
 # Cleanup
 RUN apt-get autoremove -y && apt-get clean
