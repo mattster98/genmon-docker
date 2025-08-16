@@ -13,8 +13,8 @@ apt-get install -yq --no-install-recommends \
     sudo cron curl nano git build-essential libssl-dev libffi-dev python3-dev tzdata python3-full python3-pip
 
 
-# Upgrade PIP
-RUN python3 -m pip install --upgrade pip
+# Upgrade PIP (we're installing it fresh, maybe not needed)
+# RUN python3 -m pip install --upgrade pip
 
 # Clone genmon's repository & set working directory
 RUN git clone https://github.com/jgyates/genmon.git
