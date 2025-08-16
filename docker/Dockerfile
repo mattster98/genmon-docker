@@ -27,7 +27,7 @@ RUN sed -i "s|use_serial_tcp = False|use_serial_tcp = True|g" ./conf/genmon.conf
 RUN sed -i "s|serial_tcp_port = 8899|serial_tcp_port = 6638|g" ./conf/genmon.conf
 
 # Let genmon's install script handle the rest (for some reason the default config files are not copied. They will be copied on first start of container)
-RUN sudo chmod 775 ./genmonmaint.sh && bash ./genmonmaint.sh -i -n -p 3 -s
+RUN chmod 775 ./genmonmaint.sh && bash ./genmonmaint.sh -i -n -p 3 -s
 
 # Install another dependency not handled by install script but that genmon complaints on first run
 RUN python3 -m pip install spidev
