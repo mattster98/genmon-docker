@@ -30,7 +30,7 @@ RUN sed -i "s|serial_tcp_port = 8899|serial_tcp_port = 6638|g" ./conf/genmon.con
 RUN chmod 775 ./genmonmaint.sh && bash ./genmonmaint.sh -i -n -p 3 -s
 
 # Install another dependency not handled by install script but that genmon complaints on first run
-RUN python3 -m pip install spidev
+RUN python3 -m pip install --break-system-packages spidev
 
 # Cleanup
 RUN apt-get autoremove -y && apt-get clean
